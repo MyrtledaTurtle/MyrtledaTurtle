@@ -1,0 +1,67 @@
+<!Doctype html>
+<html> 
+	<head> 
+		<h1>Scenery in python</h1>
+		<link rel = "stylesheet" type="text/css" href="webstyle1.css">
+	</head>
+	<body>
+		<p>
+		<pre>
+		
+			from turtle import *
+
+			import turtle
+			turtle.bgcolor("skyblue")
+
+			def sun():
+				begin_fill()
+				for i in range(40):
+					pencolor("yellow")
+					right(45)
+					forward(50)
+					left(126)
+					forward(50)
+					fillcolor("yellow")
+				end_fill()
+				
+			def flower():
+				begin_fill()
+				for i in range(11):
+					pencolor("black")
+					circle(20, 360)
+					left(45)
+					left (25)
+					fillcolor("coral")
+				end_fill()
+				pencolor("green")
+				right(140)
+				forward(200)
+				right(180)
+
+			penup()
+			goto(500,250)
+			pendown()
+			sun()
+
+
+			penup()
+			goto(20,-20)
+			pendown()
+			flower() 
+
+		
+		</pre>
+
+		</p>
+			<img src="senery.jpg" alt="Scenery in Python" style="width:500px;height:400px;">
+		<button id="btn" onclick="myFunction()" href=file:///C:/Users/GWC/Desktop/python%20code%20myrtle/webpages/webpage_practice%20.html > Home</button>
+		</body> 
+		
+	
+
+
+
+
+
+
+</html>

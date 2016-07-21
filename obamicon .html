@@ -1,0 +1,60 @@
+<!Doctype html>
+<html> 
+	<head> 
+		<link rel = "stylesheet" type="text/css" href="webstyle1.css">
+	</head>
+	<body>
+		<h1>Obamicon in python</h1>
+		<p>
+		<pre>
+			from PIL import Image
+				im = Image.open("joanne.jpg")
+				im.rotate(45).show()
+
+
+				darkBlue = (0, 51, 76)
+				red = (217, 26, 33)
+				lightBlue = (112, 150, 158)
+				yellow = (252, 227, 166)
+
+				size = im.size
+				updatedpix = []
+
+				pixelss = list(im.getdata())
+
+				for elem in pixelss: 
+					r=elem[0]
+					g=elem[1]
+					b=elem[2]
+
+					intensity= r+g+b
+
+					if intensity < 182: 
+						updatedpix.append(darkBlue)
+					elif intensity >182 and intensity < 364:
+						updatedpix.append(red)
+					elif intensity >364 and intensity < 546:
+						updatedpix.append(lightBlue)
+					else:
+						updatedpix.append(yellow)
+				newjpeg =Image.new("RGB", size)
+
+				newjpeg.putdata(updatedpix)
+
+				newjpeg.show()
+		</p>
+		</pre>
+		<img src="capture.jpg" alt="Beyonce Obamicon" style="width:500px;height:400px;">
+		<img src="joanne.jpg" alt="Joanne the Scammer Obamicon" style="width:500px;height:400px;">
+		
+		<button id="btn" onclick="myFunction()" href=file:///C:/Users/GWC/Desktop/python%20code%20myrtle/webpages/webpage_practice%20.html > Home</button>
+		</body> 
+		
+	
+
+
+
+
+
+
+</html>

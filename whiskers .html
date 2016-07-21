@@ -1,0 +1,103 @@
+<!Doctype html>
+<html> 
+	<head> 
+		<h1>Whisker bot in Arduino</h1>
+		<link rel = "stylesheet" type="text/css" href="webstyle1.css">
+	</head>
+	<body>
+		<p>
+		<pre>
+			#include<Servo.h>
+			Servo servoRight;
+			Servo servoLeft;
+
+
+			void setup() {
+			  // put your setup code here, to run once:
+			  servoRight.attach(12);
+			  servoLeft.attach(13);
+
+			  pinMode(7, INPUT);                         // Set right whisker pin to input
+			  pinMode(5, INPUT);                         // Set left whisker pin to input 
+
+			  Serial.begin(9600);
+
+			  servoRight.writeMicroseconds(1500);
+			  servoLeft.writeMicroseconds(1500);
+			}
+
+			void Backward() {
+			  servoLeft.writeMicroseconds(1300);
+			  servoRight.writeMicroseconds(1700);
+			}
+
+			void Forward(){
+			  servoLeft.writeMicroseconds(1700);
+			  servoRight.writeMicroseconds(1300);
+			}
+			void rightMove() {
+			  servoLeft.writeMicroseconds(1700);
+			  servoRight.writeMicroseconds(1700);
+			}
+
+			void leftMove() {
+			  servoLeft.writeMicroseconds(1300);
+			  servoRight.writeMicroseconds(1300);
+			}   
+
+			void stopMove() {
+			  servoLeft.writeMicroseconds(1500);
+			  servoRight.writeMicroseconds(1500);
+			}
+
+
+			void loop(){
+				 
+				 //if no whiskers are touched, move forward
+
+			  if ((digitalRead(5) == 1) && (digitalRead(7) == 1)) {
+					Forward();
+					
+			  }
+			  else if ((digitalRead(5) == 0) && (digitalRead(7) == 1)) {
+					Backward();
+					delay(2000);
+					leftMove();
+					delay(3000);
+					
+					
+			  }
+			  else if ((digitalRead(7) == 0) && (digitalRead(5) == 1)) {
+					Backward();
+					delay(2000);
+					rightMove();
+					delay(3000);
+					
+			  } 
+			   //if right whisker is touched, move backwards and turn left
+			  else if ((digitalRead(5) == 0) && (digitalRead(7) == 0))  {
+					Backward();
+					delay(2000);
+					rightMove();
+					delay(3000);
+					
+			   }
+			   
+			}
+			  // put your main code here, to run repeatedly:
+			 
+
+		</p>
+		</pre>
+		<button id="btn" onclick="myFunction()" href=file:///C:/Users/GWC/Desktop/python%20code%20myrtle/webpages/webpage_practice%20.html > Home</button>
+			
+		</body> 
+		
+	
+
+
+
+
+
+
+</html>

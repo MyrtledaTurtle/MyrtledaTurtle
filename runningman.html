@@ -1,0 +1,125 @@
+<!Doctype html>
+<html> 
+	<head> 
+		<h1>Running Man in python</h1>
+		<link rel = "stylesheet" type="text/css" href="webstyle1.css">
+	</head>
+	<body>
+		<p>
+		<pre>
+		
+	import pygame
+	import random
+
+	from city_scroller import Scroller as Scroller
+
+	# Define some colors
+	BLACK = (0, 0, 0)
+	WHITE = (255, 255, 255)
+	GREEN = (0, 255, 0)
+	RED = (255, 0, 0)
+	BLUE = (0, 0, 255)
+	GREY = (129, 129, 129)
+
+	FRONT_SCROLLER_COLOR = (0,0,30)
+	MIDDLE_SCROLLER_COLOR = (30,30,100)
+	BACK_SCROLLER_COLOR = (50,50,150)
+	BACKGROUND_COLOR = (17, 9, 89)
+
+	print(random.randint(0,10))
+
+	# initialize the pygame class
+	pygame.init()
+
+	# Set the width and height of the screen [width, height]
+	SCREEN_WIDTH = 800
+	SCREEN_HEIGHT = 600
+	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+	# Set the title of the window
+	pygame.display.set_caption("Running Man")
+
+	# Loop until the user clicks the close button.
+	done = False
+
+	# Used to manage how fast the screen updates
+	clock = pygame.time.Clock()
+
+	#any_scroller = Scroller(500, 500, 400, BLUE, 3, screen)
+	any_scroller = Scroller(SCREEN_WIDTH, 200, (SCREEN_HEIGHT - 50), MIDDLE_SCROLLER_COLOR, 2, screen)
+	any_scroller2 = Scroller(SCREEN_WIDTH, 100, (SCREEN_HEIGHT - 20), FRONT_SCROLLER_COLOR, 5, screen)
+
+	#back_scroller = Scroller(SCREEN_WIDTH, 20, (SCREEN_HEIGHT - 100), BACK_SCROLLER_COLOR, 1)
+
+	class Running_sprite(object):
+		def __init__(self, size):
+			self.image_s = pygame.image.load("princess.png")
+			self.image_b = self.image_s.get_rect()
+			self.size = size
+			self.x = 0
+			self.y = 50
+
+
+		def handle_keys(self):
+			key = pygame.key.get_pressed()
+			dist = 10
+			if key[pygame.K_DOWN]:
+				self.y += dist 
+			elif key[pygame.K_UP]: 
+				self.y -= dist
+			if key[pygame.K_RIGHT]: 
+				self.x += dist 
+			elif key[pygame.K_LEFT]:
+				self.x -= dist 
+			
+
+		def draw(self, screen):
+			screen.blit(self.image_s, (self.x, self.y))
+
+		
+
+
+	food_icon = Running_sprite(3)    
+		
+
+
+	# -------- Main Program Loop -----------
+	while not done:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				done = True
+
+		screen.fill(BACKGROUND_COLOR)
+		
+		any_scroller.draw_buildings(screen)
+		any_scroller.move_buildings()
+
+		any_scroller2.draw_buildings(screen)
+		any_scroller2.move_buildings()
+
+		food_icon.draw(screen)
+		food_icon.handle_keys()
+
+		pygame.display.flip()
+
+		clock.tick(60)
+
+	pygame.quit()
+	exit() 
+
+
+
+		</p>
+		</pre>
+			<img src="runningman.jpg" alt="Running Man in Python" style="width:400px;height:300px;">
+		<button id="btn" onclick="myFunction()" href=file:///C:/Users/GWC/Desktop/python%20code%20myrtle/webpages/webpage_practice%20.html > Home</button>
+		</body> 
+		
+	
+
+
+
+
+
+
+</html>
